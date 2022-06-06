@@ -29,16 +29,13 @@ def run_query(statement, args=None):
         if statement.startswith("SELECT"):
             cursor.execute(statement,args)
             results = cursor.fetchall()
-            print(results)
             return results
         elif statement.startswith("INSERT"):
             cursor.execute(statement,args)
             conn.commit()
-            print("Welcome, you are now logged in!")
         elif statement.startswith("UPDATE"):
             cursor.execute(statement,args)
             conn.commit()
-            print("Your information was successfully updated!")
         else:
             cursor.execute(statement, args)
             if cursor.rowcount == 1:
@@ -82,6 +79,4 @@ def run_query(statement, args=None):
     finally:
         disconnect_db(conn, cursor)
         print("Database disconnected")
-        
-# def check_credentials(username, password):
     
